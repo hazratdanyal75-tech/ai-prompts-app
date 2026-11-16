@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="description" content="AI Prompts Hub - Copy high-quality prompts for Midjourney, DALL-E 3, and Leonardo AI">
+    <title>PromptVault AI - Pro Image Prompts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131a2a;
+            --bg-card: rgba(23, 31, 48, 0.85);
+            --accent-primary: #6366f1;
+            --accent-secondary: #ec4899;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success: #10b981;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 10px;
+        }
+
+        /* Header / Top App Bar */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 20px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 14px auto;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .logo-text h1 {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .pro-badge {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            color: #a5b4fc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 13px 16px 13px 44px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Category Pills */
+        .categories-wrapper {
+            max-width: 1200px;
+            margin: 16px auto 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .categories-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-pill {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 9px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cat-pill.active {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .prompt-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg-secondary);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        /* Prompts Grid */
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+        }
+
+        .prompt-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .prompt-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .card-preview {
+            position: relative;
+            height: 175px;
+            width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .prompt-card:hover .card-preview img {
+            transform: scale(1.06);
+        }
+
+        .card-badges {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tag-badge {
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .fav-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .fav-btn.saved {
+            color: #ec4899;
+            background: rgba(236, 72, 153, 0.15);
+            border-color: #ec4899;
+        }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .prompt-box {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 11px;
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #cbd5e1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-copy {
+            flex: 1;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: var(--radius-sm);
+            color: white;
+            padding: 11px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.97);
+        }
+
+        .btn-view {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            padding: 11px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Prompt Builder Tab View */
+        .builder-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .generated-output {
+            background: var(--bg-primary);
+            border: 1px dashed var(--accent-primary);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            margin-top: 16px;
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #e2e8f0;
+            min-height: 80px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            animation: slideUp 0.25s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 14px 0;
+        }
+
+        .meta-chip {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .full-prompt-text {
+            background: var(--bg-primary);
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            font-size: 13.5px;
+            line-height: 1.6;
+            color: #f1f5f9;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Bottom Navigation Bar (Mobile App Feel) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(19, 26, 42, 0.95);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 14px 0;
+            z-index: 150;
+        }
+
+        .nav-item {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item.active {
+            color: #a855f7;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--success);
+            color: #064e3b;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 11px 22px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 300;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header -->
+    <header>
+        <div class="header-top">
+            <div class="logo-area">
+                <div class="logo-icon">AI</div>
+                <div class="logo-text">
+                    <h1>PromptVault</h1>
+                    <span>Midjourney • DALL-E 3 • Leonardo</span>
+                </div>
+            </div>
+            <div class="pro-badge">✨ 2026 Edition</div>
+        </div>
+
+        <div class="search-container" id="searchBarBox">
+            <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"/>
+            </svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search prompts (e.g., Cyberpunk, Logo, Portrait)...">
+        </div>
+    </header>
+
+    <!-- Category Filter Pills -->
+    <div class="categories-wrapper" id="categoryBar">
+        <button class="cat-pill active" data-cat="All">🔥 All Prompts</button>
+        <button class="cat-pill" data-cat="Portraits">📸 Portraits</button>
+        <button class="cat-pill" data-cat="Cyberpunk">🌃 Cyberpunk</button>
+        <button class="cat-pill" data-cat="3D & Logos">🎨 3D & Logos</button>
+        <button class="cat-pill" data-cat="Anime">⛩️ Anime Art</button>
+        <button class="cat-pill" data-cat="Fantasy">🐉 Fantasy</button>
+        <button class="cat-pill" data-cat="Product">👟 Product Ad</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Explore / Saved View -->
+        <div id="exploreSection">
+            <div class="section-header">
+                <h2 class="section-title" id="viewTitle">Trending AI Prompts</h2>
+                <span class="prompt-count" id="promptCounter">0 Prompts</span>
+            </div>
+            <div class="prompts-grid" id="promptsGrid"></div>
+        </div>
+
+        <!-- Custom Prompt Builder View -->
+        <div id="builderSection" class="hidden">
+            <div class="section-header">
+                <h2 class="section-title">⚡ Custom Prompt Generator</h2>
+            </div>
+            <div class="builder-card">
+                <div class="form-group">
+                    <label>1. Main Subject (Aap kya banana chahte hain?)</label>
+                    <input type="text" id="bSubject" class="form-control" placeholder="e.g., A futuristic Pakistani warrior in Lahore">
+                </div>
+                <div class="form-group">
+                    <label>2. Art Style</label>
+                    <select id="bStyle" class="form-control">
+                        <option value="hyper-realistic photography, 8k resolution, shot on Sony A7R IV">Hyper-Realistic Photo (8K)</option>
+                        <option value="Pixar 3D animation style, Unreal Engine 5 render, Octane render">3D Pixar / Disney Render</option>
+                        <option value="cyberpunk neon aesthetic, rain reflections, blade runner vibe">Cyberpunk Neon</option>
+                        <option value="Makoto Shinkai anime style, vibrant sky, detailed background">Anime Masterpiece</option>
+                        <option value="minimalist vector logo design, flat modern branding, white background">Modern Vector Logo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>3. Lighting & Mood</label>
+                    <select id="bLighting" class="form-control">
+                        <option value="cinematic volumetric lighting, golden hour glow">Cinematic Golden Hour</option>
+                        <option value="dramatic rim lighting, dark moody shadows">Dark & Dramatic</option>
+                        <option value="soft studio lighting, clean commercial look">Clean Studio Light</option>
+                        <option value="neon blue and magenta glow, night atmosphere">Neon Night Glow</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>4. Aspect Ratio</label>
+                    <select id="bRatio" class="form-control">
+                        <option value="--ar 1:1">1:1 (Instagram / Profile)</option>
+                        <option value="--ar 9:16">9:16 (TikTok / Reels / Wallpaper)</option>
+                        <option value="--ar 16:9">16:9 (YouTube Thumbnail)</option>
+                    </select>
+                </div>
+                <button class="btn-copy" onclick="generateCustomPrompt()" style="width: 100%; padding: 13px;">
+                    ✨ Generate Pro Prompt
+                </button>
+
+                <div class="generated-output" id="builderOutput">
+                    Your custom AI prompt will appear here...
+                </div>
+                <button class="btn-view" onclick="copyBuiltPrompt()" style="width: 100%; margin-top: 10px;">
+                    📋 Copy Generated Prompt
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Prompt Detail Modal -->
+    <div class="modal-overlay" id="promptModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImg" class="modal-img" src="" alt="Preview">
+            <div class="modal-body">
+                <h3 id="modalTitle" style="font-size: 18px; font-weight: 800;"></h3>
+                <div class="modal-meta">
+                    <span class="meta-chip" id="modalCat"></span>
+                    <span class="meta-chip" id="modalModel"></span>
+                    <span class="meta-chip" id="modalRatio"></span>
+                </div>
+                <div class="full-prompt-text" id="modalPromptText"></div>
+                <div class="card-actions">
+                    <button class="btn-copy" id="modalCopyBtn">📋 Copy Full Prompt</button>
+                    <button class="btn-view" onclick="forceCloseModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">✅ Prompt Copied to Clipboard!</div>
+
+    <!-- Bottom App Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="switchTab('explore', this)">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+            </svg>
+            <span>Explore</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('builder', this)">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <span>Builder</span>
+        </button>
+        <button class="nav-item" onclick="switchTab('saved', this)">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+            <span>Saved</span>
+        </button>
+    </nav>
+
+    <script>
+        // Rich AI Prompts Database (Aap isme mazeed prompts asani se add kar sakte hain)
+        const promptsData = [
+            {
+                id: 1,
+                title: "Cinematic Street Portrait",
+                category: "Portraits",
+                model: "Midjourney v6",
+                ratio: "--ar 4:5",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+                prompt: "Close-up cinematic portrait of a young woman standing in a rainy neon-lit street at night, bokeh city lights in background, natural skin texture, raindrops on jacket, shot on 85mm f/1.4 lens, photorealistic, 8k resolution, dramatic rim lighting --ar 4:5"
+            },
+            {
+                id: 2,
+                title: "Cyberpunk Samurai Warrior",
+                category: "Cyberpunk",
+                model: "Leonardo AI",
+                ratio: "--ar 9:16",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+                prompt: "Futuristic cyberpunk samurai wearing glowing carbon-fiber armor and a holographic visor, holding a neon katana, standing on a skyscraper rooftop overlooking a rainy mega-city, volumetric fog, Unreal Engine 5 render, hyper-detailed, 8k --ar 9:16"
+            },
+            {
+                id: 3,
+                title: "3D Luxury Esport Logo",
+                category: "3D & Logos",
+                model: "DALL-E 3",
+                ratio: "--ar 1:1",
+                image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=600&q=80",
+                prompt: "Modern 3D metallic esports mascot logo of a fierce cyber wolf, glowing electric blue eyes, brushed titanium and gold textures, dark obsidian background, dramatic studio rim lighting, sharp vector edges, cinema 4D octane render --ar 1:1"
+            },
+            {
+                id: 4,
+                title: "Anime Sunset Train Station",
+                category: "Anime",
+                model: "Niji v6",
+                ratio: "--ar 16:9",
+                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+                prompt: "Japanese anime scenery of a quiet coastal train station during golden sunset, cherry blossom petals floating in the breeze, vibrant clouds reflecting in the ocean, Makoto Shinkai inspired art style, highly detailed, nostalgic atmosphere --ar 16:9"
+            },
+            {
+                id: 5,
+                title: "Floating Crystal Dragon",
+                category: "Fantasy",
+                model: "Midjourney v6",
+                ratio: "--ar 9:16",
+                image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+                prompt: "Majestic ancient dragon made of translucent glowing amethyst crystals flying above misty mountain peaks, aurora borealis in the night sky, epic fantasy concept art, intricate scales, volumetric god rays, photorealistic, 8k --ar 9:16"
+            },
+            {
+                id: 6,
+                title: "Commercial Sneaker Ad",
+                category: "Product",
+                model: "DALL-E 3",
+                ratio: "--ar 4:5",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+                prompt: "Commercial product photography of a futuristic levitating red and black running sneaker, dynamic water splashes and glowing energy particles around the shoe, dark sleek studio background, crisp dramatic lighting, macro lens, advertising shot --ar 4:5"
+            },
+            {
+                id: 7,
+                title: "Royal Mughal Cyberpunk Palace",
+                category: "Cyberpunk",
+                model: "Midjourney v6",
+                ratio: "--ar 16:9",
+                image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=600&q=80",
+                prompt: "Grand Mughal architectural palace fused with futuristic cyberpunk technology, glowing neon calligraphy on marble arches, flying drones in the night sky, wet reflective courtyard, cinematic wide angle, hyper-realistic 8k --ar 16:9"
+            },
+            {
+                id: 8,
+                title: "3D Cute App Icon Mascot",
+                category: "3D & Logos",
+                model: "DALL-E 3",
+                ratio: "--ar 1:1",
+                image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80",
+                prompt: "Cute 3D clay-style mini robot mascot holding a glowing golden star, soft pastel gradient background, smooth matte texture, Pixar inspired character design, soft studio shadows, UI icon aesthetic, 8k render --ar 1:1"
+            }, 
+
+    { id: 9, title: "Neon Cyberpunk Biker", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1515260268569-9271009adfdb?auto=format&fit=crop&w=600&q=80", prompt: "A cyberpunk motorcycle rider wearing a glowing fiber-optic helmet riding through a neon-drenched Tokyo alleyway at night, heavy rain puddles reflecting vibrant purple and cyan lights, cinematic action shot, 8k --ar 16:9" },
+    { id: 10, title: "Ethereal Forest Elf", category: "Fantasy", model: "Leonardo AI", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "A majestic elven queen with glowing silver hair and intricate emerald crown standing in an ancient magical forest, bioluminescent mushrooms and floating glowing dust particles, fantasy concept art, photorealistic, 8k --ar 4:5" },
+    { id: 11, title: "Minimalist Coffee Branding", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80", prompt: "Minimalist vector logo design for an artisanal coffee brand, featuring a stylized steaming coffee cup and mountain peaks, clean lines, flat modern branding, warm brown and cream color palette, isolated on white background --ar 1:1" },
+    { id: 12, title: "Cybernetic Tiger Mech", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80", prompt: "A massive cybernetic battle tiger made of matte black steel and glowing orange LED circuitry accents, standing on a futuristic sci-fi hangar deck, dramatic low angle shot, ray-traced reflections, 8k --ar 16:9" },
+    { id: 13, title: "Anime Cyber City Hacker", category: "Anime", model: "Niji v6", ratio: "--ar 9:16", image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80", prompt: "Anime girl hacker sitting in a dark room surrounded by multiple floating holographic code screens and monitors, wearing oversized headphones, neon green accent lighting, detailed background, Makoto Shinkai style --ar 9:16" },
+    { id: 14, title: "Luxury Perfume Bottle Ad", category: "Product", model: "DALL-E 3", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80", prompt: "Commercial product photography of a luxury crystal perfume bottle resting on a dark obsidian stone, surrounded by floating white jasmine flowers and gold dust particles, moody studio lighting, premium aesthetic --ar 4:5" },
+    { id: 15, title: "Mystical Floating Islands", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80", prompt: "Floating islands in the sky with cascading waterfalls flowing down into the clouds, ancient stone temples covered in glowing blue moss, two moons in the twilight sky, epic matte painting, 8k resolution --ar 16:9" },
+    { id: 16, title: "Hyper-Realistic Wolf Portrait", category: "Portraits", model: "Midjourney v6", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=600&q=80", prompt: "Close-up portrait of an Arctic wolf staring intensely into the camera, detailed white fur texture blowing in the wind, snowy pine forest background, cinematic soft winter lighting, National Geographic style --ar 1:1" },
+    { id: 17, title: "Abstract 3D Liquid Waves", category: "3D & Logos", model: "Leonardo AI", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", prompt: "Abstract 3D render of fluid metallic gold and iridescent purple liquid waves mixing together, glossy texture, smooth organic motion, studio lighting, modern tech wallpaper background, 8k --ar 16:9" },
+    { id: 18, title: "Cozy Anime Coffee Shop", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80", prompt: "Cozy rainy day inside a Japanese coffee shop, warm yellow window lights, steaming coffee cup on a wooden table, books stacked in the corner, Ghibli studio art style, peaceful and nostalgic mood --ar 16:9" },
+    { id: 19, title: "Steampunk Airship Explorer", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=600&q=80", prompt: "A grand Victorian steampunk airship soaring through golden sunset clouds, brass gears, steam pipes, spinning propellers, adventurous explorer looking through binoculars from the deck, epic cinematic shot --ar 16:9" },
+    { id: 20, title: "Modern Luxury Watch Ad", category: "Product", model: "DALL-E 3", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80", prompt: "High-end commercial product shot of a luxury Swiss mechanical wristwatch with a skeleton dial, resting on a slate rock, water droplets on the glass, dramatic side lighting, dark luxury background --ar 4:5" },
+    { id: 21, title: "Neon Cyberpunk Alley Cat", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80", prompt: "A sleek robotic cat with glowing cyan LED eyes sitting on a wet metal rooftop in a futuristic neon city, colorful holographic billboards in the background, cinematic cyberpunk aesthetic --ar 1:1" },
+    { id: 22, title: "Cinematic Desert Caravan", category: "Portraits", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80", prompt: "A nomad warrior leading a caravan across golden sand dunes during a dramatic dust storm at sunset, warm cinematic lighting, flying sand particles, epic adventure scale, photorealistic --ar 16:9" },
+    { id: 23, title: "Futuristic Gaming Headset 3D", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80", prompt: "3D product render of a high-tech RGB gaming headset with glowing crimson accents and carbon fiber earcups, floating in mid-air against a dark gaming setup background, studio rim lighting --ar 1:1" },
+    { id: 24, title: "Anime Magical Forest Shrine", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?auto=format&fit=crop&w=600&q=80", prompt: "Ancient traditional Japanese Shinto shrine hidden deep inside a glowing mystical forest, glowing fireflies dancing around stone lanterns, lush green moss, anime aesthetic, peaceful atmosphere --ar 16:9" },
+    { id: 25, title: "Celestial Phoenix Rebirth", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 9:16", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "A magnificent cosmic phoenix bird made of blazing stellar fire and nebula stardust rising from galactic ashes, vibrant orange and deep blue colors, epic fantasy concept art, 8k --ar 9:16" },
+    { id: 26, title: "Urban Streetwear Model", category: "Portraits", model: "Midjourney v6", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80", prompt: "Full-body portrait of a young man wearing modern oversized streetwear, tactical hoodie, cargo pants, and sneakers, posing in an industrial concrete warehouse with moody graffiti walls, urban fashion shoot --ar 4:5" },
+    { id: 27, title: "Futuristic Sports Car Render", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80", prompt: "Aerodynamic futuristic electric supercar parked on a neon-lit wet highway at night, glowing laser headlights, glossy carbon fiber body reflecting city lights, commercial car photography, 8k --ar 16:9" },
+    { id: 28, title: "3D Hologram Globe Icon", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80", prompt: "Sleek 3D holographic digital globe floating above a futuristic glass pedestal, glowing blue grid lines and connected data nodes, clean minimal tech aesthetic, dark background --ar 1:1" },
+    { id: 29, title: "Anime Samurai Starry Night", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80", prompt: "A lonely samurai warrior standing on a grassy hill looking up at a breathtaking purple and blue Milky Way galaxy sky, holding a katana, anime masterpiece style, emotional and vast --ar 16:9" },
+    { id: 30, title: "Underwater Crystal Palace", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&w=600&q=80", prompt: "A majestic underwater palace built from glowing pearls and iridescent sea crystals, schools of colorful tropical fish swimming around tall arches, shafts of sunlight piercing through blue ocean water --ar 16:9" },
+    { id: 31, title: "Gourmet Burger Ad Shot", category: "Product", model: "DALL-E 3", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80", prompt: "Professional food photography of a gourmet cheeseburger with melted cheddar cheese, crispy bacon, fresh lettuce, and juicy beef patty, dark rustic background, appetizing warm studio lighting --ar 4:5" },
+    { id: 32, title: "Cyberpunk Hacker Skull Logo", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", prompt: "Modern 3D esports logo of a robotic skull wearing cyberpunk glasses with glowing neon green circuit patterns, dark metallic texture, clean vector edges, isolated on dark background --ar 1:1" },
+    { id: 33, title: "Mystical Wizard Tower", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "A tall spiraling wizard tower perched on a jagged cliff overlooking a stormy sea, purple magical energy swirling around the top window, epic fantasy concept art, highly detailed, 8k --ar 16:9" },
+    { id: 34, title: "Anime Cyberpunk Rooftop", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80", prompt: "Two anime characters sitting on a skyscraper rooftop eating ramen noodles, looking out over a massive cyberpunk city filled with towering neon holograms and flying cars, sunset glow --ar 16:9" },
+    { id: 35, title: "Cinematic Viking Warrior", category: "Portraits", model: "Midjourney v6", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80", prompt: "Close-up cinematic portrait of a rugged Viking warrior with braided hair and battle scars, wearing leather and fur armor, snowy Scandinavian fjord background, dramatic side lighting, photorealistic --ar 4:5" },
+    { id: 36, title: "Futuristic Drone Delivery", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80", prompt: "An advanced delivery drone flying past glowing futuristic skyscrapers in a clean solar-punk city, morning sunlight reflecting off solar panels, smooth cinematic motion blur, 8k --ar 16:9" },
+    { id: 37, title: "Luxury Skincare Cream Ad", category: "Product", model: "DALL-E 3", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80", prompt: "High-end commercial skincare product photography of a glass cosmetic jar surrounded by fresh green aloe vera leaves and water ripples, soft minimalist pastel studio background, elegant lighting --ar 4:5" },
+    { id: 38, title: "Magical Tree of Life", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "A gigantic glowing tree of life standing in the center of an enchanted valley, leaves shining like golden starlight, roots glowing with magical blue energy, breathtaking fantasy landscape, 8k --ar 16:9" },
+    { id: 39, title: "Anime Mecha Robot Battle", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", prompt: "Two giant anime mecha robots locked in battle amidst exploding energy blasts and crumbling city ruins, dynamic action pose, intense sci-fi mecha anime style, highly detailed --ar 16:9" },
+    { id: 40, title: "Minimalist Crown Logo 3D", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=600&q=80", prompt: "Luxury 3D minimalist royal crown logo made of brushed rose gold metal, smooth polished edges, floating against a dark matte royal blue background, professional branding design --ar 1:1" },
+    { id: 41, title: "Cyberpunk Android Girl", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80", prompt: "Portrait of a gorgeous female android with transparent porcelain skin revealing subtle glowing circuit lines underneath, short silver hair, neon pink rim lighting, cyberpunk aesthetic, 8k --ar 4:5" },
+    { id: 42, title: "Epic Mountain Dragon Flight", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "An armored knight riding a gigantic red fire-breathing dragon flying over snowy mountain peaks, epic fantasy adventure scene, dramatic stormy clouds, cinematic composition, 8k --ar 16:9" },
+    { id: 43, title: "Anime School Rooftop Lunch", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80", prompt: "Anime high school students having lunch on a sunlit school rooftop during spring, cherry blossoms blowing in the wind, clear blue sky with fluffy white clouds, classic slice-of-life anime style --ar 16:9" },
+    { id: 44, title: "Futuristic Holographic Watch", category: "Product", model: "DALL-E 3", ratio: "--ar 4:5", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80", prompt: "Futuristic wristwear projecting a glowing 3D holographic watch face and time dials into the air, sleek matte black titanium band, minimalist dark background, high-tech product commercial shot --ar 4:5" },
+    { id: 45, title: "Cyberpunk Neon Samurai Mask", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", prompt: "A traditional Japanese samurai mask (Menpo) fitted with glowing neon pink cybernetic tubing and LED eyes, mounted on a dark carbon fiber wall, cyberpunk interior design, dramatic lighting --ar 1:1" },
+    { id: 46, title: "Mystical Crystal Cave Portal", category: "Fantasy", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80", prompt: "A glowing magical portal inside a deep crystal cave, swirling purple and blue energy vortex in the center, large amethyst crystals lining the cave walls, mysterious fantasy atmosphere, 8k --ar 16:9" },
+    { id: 47, title: "Modern Luxury Car Interior", category: "Cyberpunk", model: "Midjourney v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80", prompt: "Interior view of a luxury autonomous electric car dashboard at night, curved panoramic OLED screens displaying glowing navigation data, ambient violet lighting, premium leather steering wheel --ar 16:9" },
+    { id: 48, title: "Anime Cyberpunk Hacker Den", category: "Anime", model: "Niji v6", ratio: "--ar 16:9", image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80", prompt: "A cluttered underground hacker hideout in a cyberpunk city, neon signs glowing through dusty windows, multiple glowing computer screens, cables hanging from the ceiling, anime style --ar 16:9" },
+    { id: 49, title: "3D Golden Lion Logo", category: "3D & Logos", model: "DALL-E 3", ratio: "--ar 1:1", image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?auto=format&fit=crop&w=600&q=80", prompt: "A majestic 3D solid gold lion head logo, intricate royal mane details, polished mirror finish, floating against a rich matte black background, luxury corporate branding, cinematic lighting --ar 1:1" },
+    { id: 50, title: "Cinematic Astronaut on Mars", category: "Portraits", model: "Midjourney v6", ratio: "--ar 9:16", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80", prompt: "An astronaut in a pristine white advanced spacesuit standing on the red rocky surface of Mars, looking up at planet Earth shining in the starry night sky, cinematic wide shot, photorealistic 8k --ar 9:16" }
+];
+      
+
+        // State Variables
+        let activeCategory = "All";
+        let currentTab = "explore";
+        let savedIds = JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+        const grid = document.getElementById("promptsGrid");
+        const searchInput = document.getElementById("searchInput");
+        const promptCounter = document.getElementById("promptCounter");
+
+        // Render Cards
+        function renderPrompts() {
+            const query = searchInput.value.toLowerCase().trim();
+            grid.innerHTML = "";
+
+            const filtered = promptsData.filter(item => {
+                const matchesTab = currentTab === "saved" ? savedIds.includes(item.id) : true;
+                const matchesCat = activeCategory === "All" || item.category === activeCategory;
+                const matchesSearch = item.title.toLowerCase().includes(query) ||
+                                      item.prompt.toLowerCase().includes(query) ||
+                                      item.category.toLowerCase().includes(query);
+                return matchesTab && matchesCat && matchesSearch;
+            });
+
+            promptCounter.textContent = `${filtered.length} Prompts`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No prompts found 😕</h3>
+                        <p style="margin-top:6px; font-size:13px;">Try another keyword or save your favorite prompts first.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const isSaved = savedIds.includes(item.id);
+                const card = document.createElement("div");
+                card.className = "prompt-card";
+                card.innerHTML = `
+                    <div class="card-preview" onclick="openModal(${item.id})">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        <div class="card-badges">
+                            <span class="tag-badge">${item.category}</span>
+                            <button class="fav-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave(event, ${item.id})" title="Save Prompt">
+                                ${isSaved ? '❤️' : '🤍'}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${item.title}</h3>
+                        <div class="prompt-box">${item.prompt}</div>
+                        <div class="card-actions">
+                            <button class="btn-copy" onclick="copyText('${escapeQuotes(item.prompt)}')">
+                                📋 Copy Prompt
+                            </button>
+                            <button class="btn-view" onclick="openModal(${item.id})">View</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Escape quotes for inline onclick
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        // Copy to Clipboard Function
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("✅ Prompt Copied! Paste in Midjourney / Bing / Leonardo");
+            }).catch(() => {
+                const textarea = document.createElement("textarea");
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                showToast("✅ Prompt Copied!");
+            });
+        }
+
+        // Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.textContent = msg;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+        // Save / Bookmark Prompt
+        function toggleSave(e, id) {
+            e.stopPropagation();
+            if (savedIds.includes(id)) {
+                savedIds = savedIds.filter(item => item !== id);
+                showToast("Removed from Saved");
+            } else {
+                savedIds.push(id);
+                showToast("❤️ Saved to Favorites!");
+            }
+            localStorage.setItem("savedPrompts", JSON.stringify(savedIds));
+            renderPrompts();
+        }
+
+        // Category Filter Clicks
+        document.querySelectorAll(".cat-pill").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".cat-pill").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                activeCategory = btn.getAttribute("data-cat");
+                renderPrompts();
+            });
+        });
+
+        // Search Listener
+        searchInput.addEventListener("input", renderPrompts);
+
+        // Modal Functions
+        function openModal(id) {
+            const item = promptsData.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById("modalImg").src = item.image;
+            document.getElementById("modalTitle").textContent = item.title;
+            document.getElementById("modalCat").textContent = item.category;
+            document.getElementById("modalModel").textContent = item.model;
+            document.getElementById("modalRatio").textContent = item.ratio;
+            document.getElementById("modalPromptText").textContent = item.prompt;
+
+            const copyBtn = document.getElementById("modalCopyBtn");
+            copyBtn.onclick = () => copyText(item.prompt);
+
+            document.getElementById("promptModal").classList.add("open");
+        }
+
+        function closeModal(e) {
+            if (e.target.id === "promptModal") {
+                forceCloseModal();
+            }
+        }
+
+        function forceCloseModal() {
+            document.getElementById("promptModal").classList.remove("open");
+        }
+
+        // Bottom Tab Navigation
+        function switchTab(tab, el) {
+            currentTab = tab;
+            document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+            el.classList.add("active");
+
+            const exploreSec = document.getElementById("exploreSection");
+            const builderSec = document.getElementById("builderSection");
+            const catBar = document.getElementById("categoryBar");
+            const searchBox = document.getElementById("searchBarBox");
+            const viewTitle = document.getElementById("viewTitle");
+
+            if (tab === "builder") {
+                exploreSec.classList.add("hidden");
+                catBar.classList.add("hidden");
+                searchBox.classList.add("hidden");
+                builderSec.classList.remove("hidden");
+            } else {
+                builderSec.classList.add("hidden");
+                exploreSec.classList.remove("hidden");
+                catBar.classList.remove("hidden");
+                searchBox.classList.remove("hidden");
+                viewTitle.textContent = tab === "saved" ? "❤️ Your Saved Prompts" : "Trending AI Prompts";
+                renderPrompts();
+            }
+        }
+
+        // Custom Prompt Builder Logic
+        function generateCustomPrompt() {
+            const subject = document.getElementById("bSubject").value.trim();
+            const style = document.getElementById("bStyle").value;
+            const lighting = document.getElementById("bLighting").value;
+            const ratio = document.getElementById("bRatio").value;
+
+            if (!subject) {
+                showToast("⚠️ Please enter a subject first!");
+                return;
+            }
+
+            const finalPrompt = `${subject}, ${style}, ${lighting}, ultra-detailed, masterpiece quality ${ratio}`;
+            document.getElementById("builderOutput").textContent = finalPrompt;
+        }
+
+        function copyBuiltPrompt() {
+            const text = document.getElementById("builderOutput").textContent;
+            if (text.includes("will appear here")) {
+                showToast("⚠️ Generate a prompt first!");
+                return;
+            }
+            copyText(text);
+        }
+
+        // Initialize App
+        renderPrompts();
+    </script>
+</body>
+</html>
